@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Shield, Lock, Eye, Cookie, Database, UserCheck, FileText, Heart, Sparkles, CheckCircle, Server, Mail, Settings } from "lucide-react"
 
@@ -57,6 +58,17 @@ const privacySections = [
 ]
 
 export default function PrivacyPage() {
+  const [particles, setParticles] = useState<{ left: string; top: string; delay: string; duration: string }[]>([])
+
+  useEffect(() => {
+    setParticles([...Array(20)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 5}s`,
+      duration: `${3 + Math.random() * 7}s`,
+    })))
+  }, [])
+
   return (
     <main className="relative overflow-hidden">
       {/* Background animated effects */}
@@ -66,15 +78,15 @@ export default function PrivacyPage() {
         <div className="absolute top-1/3 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/3 blur-3xl animate-pulse delay-500" />
 
         {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle, i) => (
           <div
             key={i}
             className="absolute animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${3 + Math.random() * 7}s`,
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
             }}
           >
             <Sparkles className="h-1.5 w-1.5 text-primary/30" />
