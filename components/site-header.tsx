@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Menu, X, Home, Newspaper, Store, Calculator, Info, Mail, Sparkles, BarChart3, ChevronDown, Gem, TrendingUp, Shield, Phone, MapPin, Loader2 } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { Button } from "@/components/ui/button"
@@ -74,13 +74,26 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [showCountries, setShowCountries] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
     }
+    
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowCountries(false)
+      }
+    }
+
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("mousedown", handleClickOutside)
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("mousedown", handleClickOutside)
+    }
   }, [])
 
   return (
@@ -146,11 +159,14 @@ export function SiteHeader() {
               ))}
 
               {/* Countries Dropdown */}
-              <div className="relative">
+              <div className="relative" ref={dropdownRef}>
                 <button
-                  onMouseEnter={() => setShowCountries(true)}
-                  onMouseLeave={() => setShowCountries(false)}
-                  className="group flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30"
+                  onClick={() => setShowCountries(!showCountries)}
+                  className={`group flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                    showCountries 
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30" 
+                      : "text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/30"
+                  }`}
                 >
                   <BarChart3 className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                   <span>أسعار الدول</span>
@@ -160,8 +176,6 @@ export function SiteHeader() {
                 {/* Dropdown menu */}
                 {showCountries && (
                   <div
-                    onMouseEnter={() => setShowCountries(true)}
-                    onMouseLeave={() => setShowCountries(false)}
                     className="absolute left-0 top-full mt-2 w-80 rounded-lg border border-border/60 bg-card shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200"
                   >
                     <div className="absolute -top-2 left-4 h-3 w-3 rotate-45 border-l border-t border-border/60 bg-card" />
@@ -175,14 +189,10 @@ export function SiteHeader() {
                           <Link
                             key={c.slug}
                             href={`/${c.slug}`}
+                            onClick={() => setShowCountries(false)}
                             className="group flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-foreground hover:translate-x-1"
                           >
-                            <img
-                              src={`https://flagcdn.com/w20/${c.isoCode.toLowerCase()}.png`}
-                              alt={c.name}
-                              className="h-3 w-4 rounded-sm object-cover"
-                              loading="lazy"
-                            />
+                            <span className={`fi fi-${c.isoCode.toLowerCase()} rounded-xs shadow-sm transition-transform duration-300 group-hover:scale-110`} />
                             <span>{c.name}</span>
                             <TrendingUp className="mr-auto h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                           </Link>
@@ -257,12 +267,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className="group flex items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition-all duration-200 hover:bg-accent hover:text-foreground hover:shadow-sm hover:translate-x-1"
                   >
-                    <img
-                      src={`https://flagcdn.com/w20/${c.isoCode.toLowerCase()}.png`}
-                      alt={c.name}
-                      className="h-3 w-4 rounded-sm object-cover"
-                      loading="lazy"
-                    />
+                    <span className={`fi fi-${c.isoCode.toLowerCase()} rounded-xs shadow-sm transition-transform duration-300 group-hover:scale-110`} />
                     <span>{c.name}</span>
                   </Link>
                 ))}

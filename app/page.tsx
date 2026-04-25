@@ -115,21 +115,21 @@ export default async function HomePage() {
             icon={<Calculator className="h-6 w-6" aria-hidden="true" />}
             title="حاسبة زكاة الذهب"
             description="احسب زكاة ذهبك بدقة وفق النصاب الشرعي والسعر الحالي للذهب"
-            gradient="from-amber-500/20 to-yellow-500/20"
+            gradient="from-primary/20 to-primary/20"
           />
           <ToolCard
             href="/shops"
             icon={<Store className="h-6 w-6" aria-hidden="true" />}
             title="محلات الذهب"
             description="دليل شامل لمحلات وصاغة الذهب في جميع الدول العربية مع التقييمات"
-            gradient="from-emerald-500/20 to-teal-500/20"
+            gradient="from-primary/20 to-primary/20"
           />
           <ToolCard
             href="/blog"
             icon={<Newspaper className="h-6 w-6" aria-hidden="true" />}
             title="مدونة الذهب"
             description="مقالات وتحليلات حصرية عن سوق الذهب والاستثمار والنصائح العملية"
-            gradient="from-blue-500/20 to-cyan-500/20"
+            gradient="from-primary/20 to-primary/20"
           />
         </div>
       </section>

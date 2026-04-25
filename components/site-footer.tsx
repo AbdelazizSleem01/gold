@@ -109,7 +109,7 @@ export function SiteFooter() {
             {/* About section */}
             <div className="animate-slide-up group">
               <Link href="/" className="mb-4 flex items-center gap-2 text-xl font-bold transition-transform duration-300 group-hover:scale-105">
-                <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-linear-to-br from-primary to-primary/70 shadow-lg">
+                <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-linear-to-br from-primary/20 to-primary/20 shadow-lg">
                   <Image
                     src="/logo.png"
                     alt="شعار أسعار الذهب"
@@ -176,9 +176,9 @@ export function SiteFooter() {
                   <li key={c.slug}>
                     <Link
                       href={`/${c.slug}`}
-                      className="group flex items-center gap-1 text-muted-foreground transition-all duration-300 hover:-translate-x-1 hover:text-primary"
+                      className="group flex items-center gap-2 text-muted-foreground transition-all duration-300 hover:-translate-x-1 hover:text-primary"
                     >
-                      <Gem className="h-2.5 w-2.5 opacity-0 transition-all duration-300 group-hover:opacity-100" />
+                      <span className={`fi fi-${c.isoCode.toLowerCase()} rounded-xs shadow-sm transition-transform duration-300 group-hover:scale-110`} />
                       <span>{c.name}</span>
                     </Link>
                   </li>
