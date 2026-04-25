@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { FloatingContact } from "@/components/floating-contact"
 import "@/styles/globals.css"
 
 const cairo = Cairo({
@@ -121,6 +122,7 @@ export default function RootLayout({
           <SiteHeader />
           <div className="flex-1">{children}</div>
           <SiteFooter />
+          <FloatingContact />
           <Toaster richColors position="top-center" dir="rtl" />
         </ThemeProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
