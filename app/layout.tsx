@@ -117,7 +117,7 @@ export default function RootLayout({
       className={`${cairo.variable} ${amiri.variable} bg-background`}
     >
       <body className="font-sans antialiased min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <SiteHeader />
           <div className="flex-1">{children}</div>
           <SiteFooter />

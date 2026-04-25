@@ -19,7 +19,7 @@ function GoldPriceTicker() {
         const res = await fetch("/api/gold-price/current?country=egypt")
         if (res.ok) {
           const data = await res.json()
-          setPrice(data.gram21) 
+          setPrice(data.gram21)
         }
       } catch (err) {
         console.error("Failed to fetch gold price:", err)
@@ -55,7 +55,7 @@ function GoldPriceTicker() {
     <div className="hidden items-center gap-2 rounded-full bg-primary/10 px-3 py-1 md:flex">
       <Gem className="h-3 w-3 animate-pulse text-primary" />
       <span className="text-xs font-medium text-primary">
-          جرام الذهب 21: {price.toFixed(2)} ج.م
+        جرام الذهب 21: {price.toFixed(2)} ج.م
       </span>
     </div>
   )
@@ -85,12 +85,11 @@ export function SiteHeader() {
 
   return (
     <>
-      <header 
-        className={`sticky top-0 z-50 transition-all duration-500 ${
-          scrolled 
-            ? "border-b border-border/60 bg-background/95 shadow-lg backdrop-blur-md" 
+      <header
+        className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
+            ? "border-b border-border/60 bg-background/95 shadow-lg backdrop-blur-md"
             : "border-b border-border/30 bg-background/80 backdrop-blur-sm"
-        }`}
+          }`}
       >
         {/* Animated gold glow effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -104,7 +103,7 @@ export function SiteHeader() {
             <Link href="/" className="group relative flex items-center gap-2 text-lg font-bold">
               {/* Animated border glow */}
               <div className="absolute -inset-1 rounded-lg bg-linear-to-r from-primary/0 via-primary/50 to-primary/0 opacity-0 blur-xl transition-all duration-700 group-hover:opacity-100 group-hover:duration-300" />
-              
+
               <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg bg-linear-to-br from-primary/20 to-accent/20 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/30">
                 <Image
                   src="/logo.png"
@@ -116,7 +115,7 @@ export function SiteHeader() {
                 {/* Gold sparkle effect */}
                 <Sparkles className="absolute -top-1 -right-1 h-3 w-3 animate-pulse text-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </span>
-              
+
               <span className="hidden font-serif sm:inline bg-linear-to-l from-foreground via-primary to-foreground bg-clip-text text-transparent transition-all duration-500 group-hover:scale-105">
                 أسعار الذهب
               </span>
@@ -135,10 +134,10 @@ export function SiteHeader() {
                 >
                   {/* Animated background */}
                   <span className="absolute inset-0 bg-linear-to-r from-primary to-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  
+
                   <l.icon className="relative h-4 w-4 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
                   <span className="relative">{l.label}</span>
-                  
+
                   {/* Tooltip on hover */}
                   <span className="absolute -top-10 left-1/2 hidden -translate-x-1/2 rounded-md bg-foreground px-2 py-1 text-xs text-background whitespace-nowrap opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-top-12 lg:block">
                     {l.description}
@@ -198,10 +197,10 @@ export function SiteHeader() {
             {/* Actions */}
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              
+
               {/* Live Gold Price Indicator */}
               <GoldPriceTicker />
-              
+
               <Button
                 variant="ghost"
                 size="icon"
@@ -242,14 +241,14 @@ export function SiteHeader() {
                   <ChevronDown className="h-4 w-4 -rotate-90 opacity-0 transition-all group-hover:opacity-100" />
                 </Link>
               ))}
-              
+
               <div className="my-2 border-t border-border/60" />
-              
+
               <p className="px-3 py-2 text-xs font-semibold text-muted-foreground flex items-center gap-2">
                 <BarChart3 className="h-3 w-3" />
                 أسعار الذهب حسب الدول
               </p>
-              
+
               <div className="grid grid-cols-2 gap-1">
                 {COUNTRIES.slice(0, 10).map((c) => (
                   <Link
@@ -273,7 +272,7 @@ export function SiteHeader() {
               <div className="mt-3 rounded-lg bg-muted/30 p-3">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Phone className="h-3 w-3" />
-                  <span>دعم العملاء: +966 12 345 6789</span>
+                  <span>دعم العملاء: +20 11 5636 1792</span>
                 </div>
               </div>
             </nav>

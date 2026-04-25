@@ -3,14 +3,14 @@
 import Link from "next/link"
 import Image from "next/image"
 import { COUNTRIES } from "@/lib/countries"
-import { 
-  Home, 
-  Newspaper, 
-  Store, 
-  Calculator, 
-  Heart, 
-  Mail, 
-  Shield, 
+import {
+  Home,
+  Newspaper,
+  Store,
+  Calculator,
+  Heart,
+  Mail,
+  Shield,
   LogIn,
   MapPin,
   Phone,
@@ -127,7 +127,7 @@ export function SiteFooter() {
                 موقعك الموثوق لمتابعة أسعار الذهب اليومية في جميع الدول العربية مع مدوّنة وحاسبة زكاة الذهب ودليل محلات
                 الذهب.
               </p>
-              
+
               {/* Social links */}
               <div className="mt-4 flex gap-2">
                 {socialLinks.map((social) => (
@@ -210,7 +210,7 @@ export function SiteFooter() {
               <div className="mt-4 space-y-2 border-t border-border/30 pt-4">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Phone className="h-3 w-3" />
-                  <span>+966 12 345 6789</span>
+                  <span>+20 11 5636 1792</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Mail className="h-3 w-3" />
@@ -247,9 +247,8 @@ export function SiteFooter() {
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 left-6 z-50 transform rounded-full bg-linear-to-r from-primary to-primary/70 p-3 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl ${
-          showScrollTop ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-        }`}
+        className={`fixed bottom-6 left-6 z-50 transform rounded-full bg-linear-to-r from-primary to-primary/70 p-3 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl ${showScrollTop ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
+          }`}
         aria-label="الذهاب للأعلى"
       >
         <ChevronUp className="h-5 w-5" />

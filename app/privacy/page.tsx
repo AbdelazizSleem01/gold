@@ -106,7 +106,7 @@ export default function PrivacyPage() {
 
         {/* Header */}
         <header className="mb-12 text-center animate-slide-up">
-          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 mb-4">
+          <div className="flex w-32 mx-auto items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 mb-4">
             <Shield className="h-4 w-4 text-primary" />
             <span className="text-xs font-medium text-primary">خصوصية وأمان</span>
           </div>

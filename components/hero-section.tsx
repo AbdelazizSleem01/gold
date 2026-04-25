@@ -27,7 +27,7 @@ export function HeroSection() {
         <div className="mx-auto w-full max-w-3xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-4 py-1.5 text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-            <span>أسعار مباشرة من Metal Sentinel</span>
+            <span>أسعار مباشرة من موقعنا</span>
           </div>
           <h1 className="mb-4 text-balance font-serif text-4xl font-bold tracking-tight text-foreground md:text-6xl">
             أسعار الذهب اليوم
