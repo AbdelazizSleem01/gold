@@ -125,17 +125,30 @@ export default async function ShopsPage({
                             <span className="font-mono tabular-nums">{shop.phone}</span>
                           </a>
                         )}
-                        {shop.website && (
-                          <a
-                            href={shop.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-primary hover:underline"
-                          >
-                            <Globe className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                            <span className="truncate">{shop.website}</span>
-                          </a>
-                        )}
+                        {shop.website && (() => {
+                          // Fail-closed: only absolute http(s) URLs are allowed in href.
+                          let safeHref: string | null = null;
+                          try {
+                            const parsed = new URL(String(shop.website).trim());
+                            if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+                              safeHref = parsed.href;
+                            }
+                          } catch {
+                            safeHref = null;
+                          }
+                          if (!safeHref) return null;
+                          return (
+                            <a
+                              href={safeHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 text-primary hover:underline"
+                            >
+                              <Globe className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                              <span className="truncate">{shop.website}</span>
+                            </a>
+                          );
+                        })()}
                       </div>
                     </article>
                   ))}
